@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang=“ko”>
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <script type="text/javascript">
+    </script>
+</head>
+<body>
+    <!--
+        사용자의 키, 체중을 입력받아서
+        BMI 수치를 계산해서 보여준느 페이지를 작성한다.
+        BMI는 체중 / 키(m)의 제곱
+    -->
+<div id ="level">
+
+</div>
+<div id="content">
+
+</div>
+<script type="text/javascript">
+
+//1. 체중을 입력받는다.
+    var weight = prompt("체중을 입력해주세요", "체중입력")
+//2. 신장을 입력받는다.
+    var height = prompt("신장을 입력해주세요", "신장입력")
+//3. 형변환을 한다.
+    weight = Number(weight);
+    height = Number(height) / 100;
+//4. BMI 계산을 한다.
+    var bmi = weight / height ** 2;
+/*
+    18.5미만 : 저체중
+    18.5이상 23미만 : 정상체중
+    23이상 : 과체중
+
+    [조건식] && [조건식]
+    [조건식] || [조건식]
+*/
+
+    if (bmi < 18.5) {
+        document.getElementById("level").innerHTML = "저체중";
+    }
+    else if (bmi < 23) {
+        document.getElementById("level").innerHTML = "정상체중";
+    }
+    else {
+        document.getElementById("level").innerHTML = "과체중";
+    }
+
+
+/*
+    우선순위
+    **
+    *, /, %
+    =, -
+*/
+//5. 결과를 출력한다.
+    if (weight != null) {
+        document.getElementById("content").innerHTML =
+        bmi;
+    }
+</script>
+</body>
+</html>

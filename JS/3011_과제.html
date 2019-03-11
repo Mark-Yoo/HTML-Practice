@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang=“en”>
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <script type="text/javascript">
+    function gugu() {
+        weight = prompt();
+        height = prompt();
+    }
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+    
+    //메뉴 구현
+    //1. 섭씨를 입력하세요.
+    //2. 화씨를 입력하세요.
+    //3. 프로그램종료
+    var save1 = null;
+    var save2 = null;
+    while(true) {
+        console.log("menu");
+        console.log("1.섭씨->화씨");
+        console.log("2.화씨->섭씨");
+        console.log("3.프로그램 종료");
+        menu = prompt("메뉴를 선택하세요", "1");
+
+        if(menu=="1") {
+            if(save2 !=null) {
+                console.log(fer);
+                save2 = null;
+            }
+            else{
+                cel = prompt("온도를 입력하세요-섭씨->화씨", "섭씨");
+                cel = Number(cel);
+                save1=cel*9/5+32;
+                console.log(save1+"Ferenheit");
+            }
+        } else if(menu=="2") {
+            if(save1 !=null) {
+                console.log(cel);
+                save1 = null;
+            }
+            else{
+                fer = prompt("온도를 입력하세요-화씨->섭씨", "화씨");
+                fer = Number(fer);    
+                save2=(fer-32)*5/9;
+                console.log(save2+"Celcius");
+            }
+        } else if(menu=="3") {
+            console.log("프로그램 종료");
+            break;
+        }
+    }
+    </script>
+</body>
+</html>
