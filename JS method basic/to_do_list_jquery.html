@@ -1,0 +1,62 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <title>to do list on jquery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<style>
+    .strike {
+        text-decoration: line-through;
+    }
+</style>
+<body>
+    <h1>To do list on jquery</h1>
+        <form id="todo-add" class="todo-add">
+            <label for="todo">To do:</label>
+            <input type="text" id="new-todo-add" class="new-todo-add" name="todo">
+            <input type="submit" id="add-todo-line" class="add-todo-line" value="add list">
+        </form>
+        <form id="to-do-list">
+            <ul id="to-do-list-added" class="to-do-list-added">
+            </ul>
+        </form>
+
+
+    <script type=text/javascript>
+        function addTodoItem() {
+            var todoItem = $("#new-todo-add").val();
+            $("#to-do-list").append("<li><input type='checkbox'" +
+                                "name='todo-item-done'" + "class='todo-item-done'" + 
+                                " value='" + todoItem + "'/>" 
+                                + todoItem + 
+                                " <button class = 'todo-item-delete'>"+
+                                "Delete</button><li>");
+            $("#new-todo-add").val("");
+        }
+        function deleteTodoItem(e, item) {
+            e.preventDefault();
+            $(item).parent().fadeOut('slow', function() {
+                $(item).parent().remove();
+            });
+        }
+
+        function completeTodoItem() {
+            $(this).parent().toggleClass("strike");
+        }
+
+        $(function() {
+            $("#add-todo-line").on('click', function(e) {
+                e.preventDefault();
+                addTodoItem()
+            });
+
+        $("#to-do-list").on('click', '.todo-item-delete', function(e) {
+            var item = this;
+            deleteTodoItem(e, item)
+        })
+        $(document).on('click', ".todo-item-done", completeTodoItem)
+    });
+    </script>
+</body>
+</html>

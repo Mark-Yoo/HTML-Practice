@@ -1,114 +1,106 @@
 <!doctype html>
-<html lang=“en”>
 <head>
     <meta charset="UTF-8">
-    <title>To do list</title>
-</head>
-<style>
-    body {
-        margin: 0;
-        min-width:250px;
-    }
-    * {
-        box-sizing: border-box;
-    }
-    ul {
-        margin:0;
-        padding:0;
-    }
-    .addBtn {
-        cursor:pointer;
-    }
-    /*클릭하면 글자 한가운데 줄긋기*/
-    ul li.checked {
-        background: gray;
-        color:white;
-        text-decoration:line-through;
-    }
-    /*클릭 했을 때 변화*/
-    ul li.checked::before {
-        content: '';
-        position: absolute;
-        transform: rotate(45deg);
-        height: 15px;
-        width: 7px;
-    }
+    <title>to do list on jquery</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-</style>
+</head>
+
 <body>
-    <div id="enterList" class="header">
-        <h2>To do list example</h2>
-        <input type="text" id="to_do" placeholder="enter something...">
-        <span onclick="newElement()" class="addBtn">Add</span>
+<!-- Uses a transparent header that draws on top of the layout's background -->
+<style>
+    .strike {
+    text-decoration: line-through;
+    }
+    .demo-layout-transparent {
+      background: url('image/background.jpg') center / cover;
+    }
+    .demo-layout-transparent .mdl-layout__header,
+    .demo-layout-transparent .mdl-layout__drawer-button {
+      /* This background is dark, so we set text to white. Use 87% black instead if
+         your background is light. */
+      color: white;
+    }
+    </style>
+    
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+      <header class="mdl-layout__header mdl-layout__header--transparent">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">To do List</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation -->
+          <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Add</a>
+            <a class="mdl-navigation__link" href="">Delete</a>
+            <a class="mdl-navigation__link" href="">Modify</a>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">To do List</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">All</a>
+          <a class="mdl-navigation__link" href="">Ing</a>
+          <a class="mdl-navigation__link" href="">Done</a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content" style="text-align: center">
+          <h1>To do list on jquery</h1>
+        <form id="todo-add" class="todo-add">
+            <label for="todo">To do:</label>
+            <input type="text" id="new-todo-add" class="new-todo-add" name="todo" style="margin-left:5%">
+            <input type="submit" id="add-todo-line" class="add-todo-linemdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="add list" style="margin-left:5%">
+        </form>
+        <form id="to-do-list">
+            <ul style="list-style:none" id="to-do-list-added" class="to-do-list-added">
+            </ul>
+          </div>
+        </form>
+      </main>
     </div>
 
-    <ul id="todo_list">
-
-    </ul>
 
 
-
-    <script type="text/javascript">
-
-    //닫기 추가
-
-    var myNodelist = document.getElementsByTagName("Li");
-    var i;
-    for (i = 0; i < myNodelist.length; i++) {
-        var span = document.createElement("SPAN");
-        var txt = document.createTextNode("\u00D7");
-        span.className = "close";
-        span.appendChild(txt);
-        myNodelist[i].appendChild(span);
-    }
-    //여기까지
-
-    //닫기 기능에 글자 없애기 추가
-    var close = document.getElementsByClassName("close");
-    var i;
-    for (i = 0; i< close.length; i++) {
-        close[i].onclick = function() {
-            var div = this.parentElement;
-            div.style.display = "none";
+    <script type=text/javascript>
+        function addTodoItem() {
+            var todoItem = $("#new-todo-add").val();
+            $("#to-do-list").append("<li><input type='checkbox'" +
+                                "name='todo-item-done'" + "class='todo-item-done'" + 
+                                " value='" + todoItem + "'/>" 
+                                + todoItem + 
+                                "<br><button class = 'todo-item-delete mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>"+
+                                "Delete</button><li>");
+            $("#new-todo-add").val("");
         }
-    }
-    //여기까지
 
-    //checkbox 표시 추가
-    var list = document.querySelector('ul');
-    list.addEventListener('click', function(ev) {
-        if (ev.target.tagName === 'LI') {
-            ev.target.classList.toggle('checked');
+        function deleteTodoItem(e, item) {
+            e.preventDefault();
+            $(item).parent().fadeOut('slow', function() {
+                $(item).parent().remove();
+            });
         }
-    }, false);
-    //여기까지
 
-    //Add 버튼을 눌러 to do list에 아이템 추가
-    function newElement() {
-        var li = document.createElement("li");
-        var inputValue = document.getElementById("to_do").value;
-        var t = document.createTextNode(inputValue);
-        li.appendChild(t);
-        if (inputValue ==='') {
-            alert("Write 'What to do'");
-        } else {
-            document.getElementById("todo_list").appendChild(li);
+        function completeTodoItem() {
+            $(this).parent().toggleClass("strike");
         }
-        document.getElementById("to_do").value = "";
 
-        var span = document.createElement("SPAN");    
-        var txt = document.createTextNode("\u00D7");
-        span.className = "close";
-        span.appendChild(txt);
-        li.appendChild(span);
+        $(function() {
+            $("#add-todo-line").on('click', function(e) {
+                e.preventDefault();
+                addTodoItem()
+            });
 
-        for (i=0; i<close.length; i++) {
-            close[i].onclick =  function() {
-                var div = this.parentElement;
-                div.style.display = "none";
-            }
-        }
-     }
+        $("#to-do-list").on('click', '.todo-item-delete', function(e) {
+            var item = this;
+            deleteTodoItem(e, item)
+        })
+        $(document).on('click', ".todo-item-done", completeTodoItem)
+    });
     </script>
 </body>
 </html>
