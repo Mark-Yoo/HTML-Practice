@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang=“en”>
+<head>
+    <meta charset="UTF-8">
+    <title>To do list</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        min-width:250px;
+    }
+    * {
+        box-sizing: border-box;
+    }
+    ul {
+        margin:0;
+        padding:0;
+    }
+    .addBtn {
+        cursor:pointer;
+    }
+    /*클릭하면 글자 한가운데 줄긋기*/
+    ul li.checked {
+        background: gray;
+        color:white;
+        text-decoration:line-through;
+    }
+    /*클릭 했을 때 변화*/
+    ul li.checked::before {
+        content: '';
+        position: absolute;
+        transform: rotate(45deg);
+        height: 15px;
+        width: 7px;
+    }
+
+</style>
+<body>
+    <div id="enterList" class="header">
+        <h2>To do list example</h2>
+        <input type="text" id="to_do" placeholder="enter something...">
+        <span onclick="newElement()" class="addBtn">Add</span>
+    </div>
+
+    <ul id="todo_list">
+
+    </ul>
+
+
+
+    <script type="text/javascript">
+
+    //닫기 추가
+
+    var myNodelist = document.getElementsByTagName("Li");
+    var i;
+    for (i = 0; i < myNodelist.length; i++) {
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        myNodelist[i].appendChild(span);
+    }
+    //여기까지
+
+    //닫기 기능에 글자 없애기 추가
+    var close = document.getElementsByClassName("close");
+    var i;
+    for (i = 0; i< close.length; i++) {
+        close[i].onclick = function() {
+            var div = this.parentElement;
+            div.style.display = "none";
+        }
+    }
+    //여기까지
+
+    //checkbox 표시 추가
+    var list = document.querySelector('ul');
+    list.addEventListener('click', function(ev) {
+        if (ev.target.tagName === 'LI') {
+            ev.target.classList.toggle('checked');
+        }
+    }, false);
+    //여기까지
+
+    //Add 버튼을 눌러 to do list에 아이템 추가
+    function newElement() {
+        var li = document.createElement("li");
+        var inputValue = document.getElementById("to_do").value;
+        var t = document.createTextNode(inputValue);
+        li.appendChild(t);
+        if (inputValue ==='') {
+            alert("Write 'What to do'");
+        } else {
+            document.getElementById("todo_list").appendChild(li);
+        }
+        document.getElementById("to_do").value = "";
+
+        var span = document.createElement("SPAN");    
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        li.appendChild(span);
+
+        for (i=0; i<close.length; i++) {
+            close[i].onclick =  function() {
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+     }
+    </script>
+</body>
+</html>
