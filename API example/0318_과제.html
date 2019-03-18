@@ -2,10 +2,40 @@
 <html lang=“en”>
 <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>회원가입form</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
+<style>
+    #join_form {
+        max-width: 500px;
+        padding:20px 12px 10px 20px;
+        font: 13px Arial, Helvetica, sans-serif;
+    }
+    .form_heading {
+        font-weight:bold;
+        font-style:italic;
+        border-bottom:2px solid #ddd;
+        margin-bottom:20px;
+        font-size:15px;
+        padding-bottom:3px;
+    }
+    #join_form label {
+        display:block;
+        margin:0px 0px 15px 0px;
+    }
+    #join_form label > span {
+        width:100px;
+        font-weight:bold;
+        float:left;
+        padding-top:8px;
+        padding-right:5px;
+    }
+    #join_form span.required {
+        color:red;
+    }
+
+</style>
 <body>
     <!--
 
@@ -25,13 +55,21 @@
             input, select, textarea
             input - type => text, email. phone, date, password, hidden
     -->
+
+    <div class="form_heading">회원가입</div>
     <form action="#" method="post" id="join_form">
-        <input type="text" name="identification" placeholder="이메일을 입력하세요" id="identification"><br>
-        <input type="password" name="password" placeholder="6~12자리의 비밀번호를 입력하세요" id="password"><br>
-        <input type="text" name="name" placeholder="이름을 입력하세요" id="name"><br>
-        <input type="text" name="address" placeholder="도로명 주소 입력" id="address">    
+        <label for="field1"><span>이메일<span class="required">*</span></span><input type="text" name="identification" placeholder="이메일을 입력하세요" id="identification"></label><br>
+        <label for="field2"><span>비밀번호<span class="required">*</span></span><input type="password" name="password" placeholder="6~12자리의 비밀번호를 입력하세요" id="password"><label></label><br>
+        <label for="field3"><span>비밀번호 힌트</span><select name="field3" class="select_password_q">
+            <option value="classmate">초등학교 짝궁 이름은?</option>
+            <option value="where you born">태어난 곳은?</option>
+            <option value="where your parents met">부모님이 만난 곳은?</option>
+        </select></label><br>
+        <label for="field4"><span>힌트 정답 :</span><input type="text" name="answer" placeholder="힌트 정답" id="answer"></label><br>
+        <label for="field5"><span>이름<span class="required">*</span></span><input type="text" name="name" placeholder="이름을 입력하세요" id="name"></label><br>
+        <label for="field6"><span>주소<span class="required">*</span></span><input type="text" name="address" placeholder="도로명 주소 입력" id="address"></label>
         <button id="zipcode_search">우편번호 찾기</button><br>
-        <button id="complete">완료</button>
+        <label><span></span><button id="complete">완료</button></label>
     </form>
 
 
