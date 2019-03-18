@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang=“en”>
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<style>
+    ul {
+        display:inline-block;
+    }
+</style>
+<body>
+<div>
+        <ul>
+                <li class="menu"><a href="#">main menu</a>
+                    <ul class="submenu">
+                        <li><a href="#">link</a></li>
+                        <li><a href="#">link</a></li>
+                        <li><a href="#">link</a></li>
+                        <li><a href="#">link</a></li>
+                        <li><a href="#">link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul>
+                    <li class="menu"><a href="#">main menu</a>
+                        <ul class="submenu">
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                        </ul>
+                    </li>
+            </ul>
+            <ul>
+                    <li class="menu"><a href="#">main menu</a>
+                        <ul class="submenu">
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                            <li><a href="#">link</a></li>
+                        </ul>
+                    </li>
+            </ul>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $(".submenu").hide();
+        $(".menu").mouseover(function() {
+            $(".submenu").slideDown("slow");
+        });
+        $(".menu").mouseleave(function() {
+            $(".submenu").slideUp("slow");
+        });
+
+        });
+</script>
+</body>
+</html>

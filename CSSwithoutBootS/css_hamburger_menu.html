@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang=“en”>
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<header>
+    <button class="hamburger">&#9776;</button>
+    <button class="cross">&#735;</button>
+</header>
+<style>
+
+</style>
+<body>
+    <div class="menu">
+        <ul>
+            <a href="#"><li>link</li></a>
+            <a href="#"><li>link</li></a>
+            <a href="#"><li>link</li></a>
+            <a href="#"><li>link</li></a>
+            <a href="#"><li>link</li></a>
+            <a href="#"><li>link</li></a>
+        </ul>
+    </div>
+ 
+ 
+    <script tpye="text/javascript">
+        $(document).ready(function() {
+            $(".cross").hide();
+            $(".menu").hide();
+            $(".hamburger").click(function(){
+                $(".menu").slideToggle("slow",function() {
+                    $("hamburger").hide();
+                    $(".cross").show();
+                });
+            });
+            $(".cross").click(function() {
+                $(".menu").slideToggle("slow", function() {
+                    $(".cross").hide();
+                    $(".hamburger").show();
+                });
+            });
+        });
+    </script>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+</body>
+</html>

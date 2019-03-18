@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang=“en”>
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<style>
+    ul {
+        display:inline-block;
+    }
+    .menu1 {
+        line-height:50px;
+    }
+    .menu2 {
+        line-height:50px;
+    }
+    .menu3 {
+        line-height: 50px;
+    }
+</style>
+<body>
+
+    <ul>
+        <li class="menu1"><a href="#">main menu</a>
+            <ul class="submenu1">
+                <li><a href="#">link</a></li>
+                <li><a href="#">link</a></li>
+                <li><a href="#">link</a></li>
+                <li><a href="#">link</a></li>
+                <li><a href="#">link</a></li>
+            </ul>
+        </li>
+    </ul>
+    <ul>
+            <li class="menu2"><a href="#">main menu</a>
+                <ul class="submenu2">
+                    <li><a href="#">link</a></li>
+                    <li><a href="#">link</a></li>
+                    <li><a href="#">link</a></li>
+                    <li><a href="#">link</a></li>
+                    <li><a href="#">link</a></li>
+                </ul>
+            </li>
+    </ul>
+    <ul>
+            <li class="menu3"><a href="#">main menu</a>
+                <ul class="submenu3">
+                    <li><a href="#">link</a></li>
+                    <li><a href="#">link</a></li>
+                    <li><a href="#">link</a></li>
+                    <li><a href="#">link</a></li>
+                    <li><a href="#">link</a></li>
+                </ul>
+            </li>
+    </ul>
+
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $(".submenu1").hide();
+        $(".menu1").hover(function() {
+            $(".submenu1").slideToggle("slow");
+        });
+
+
+        $(".submenu2").hide();
+        $(".menu2").hover(function() {
+            $(".submenu2").slideToggle("slow");
+        });
+
+
+        $(".submenu3").hide();
+        $(".menu3").hover(function() {
+            $(".submenu3").slideToggle("slow");
+        });
+
+        });
+</script>
+</body>
+</html>
