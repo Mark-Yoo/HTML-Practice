@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang=“en”>
+<head>
+    <meta charset="UTF-8">
+    <title>Lottery</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+        <div class="jumbotron" style="text-align:center">
+                <h1 class="display-4">Randomized Lottery number creator</h1>
+                <p class="lead">Are you ready to test your luck?</p>
+                <hr class="my-4">
+                <p>Let's hit the button to test your luck</p>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#lotto_modal">Let's Roll</button>
+              </div>
+
+              <div class="modal" id="lotto_modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Lottery number</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p><table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">#1</th>
+                                    <th scope="col">#2</th>
+                                    <th scope="col">#3</th>
+                                    <th scope="col">#4</th>
+                                    <th scope="col">#5</th>
+                                    <th scope="col">#6</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                              </table></p>
+                              <p id=how_much></p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id ="delete_button" onclick="clear()">Clear</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" onclick="lotto()">Get numbers</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+<script type="text/javascript">
+ 
+function lotto() {
+    var c = parseInt(prompt("게임 횟수를 입력해주세요"))
+    var d = c * 1000;
+    for(j=0;j<c;j++) {
+        var original_numbers = [];
+        for(i=1;i<45;i++) {
+            original_numbers.push(i);
+        }
+    
+    var numbers = []; //숫자를 담을 공간 (6번 반복은 하면 안됨 리셋도 안됨)
+
+    for(i=0;i<6;i++) {
+        var number_index = Math.floor((Math.random() * original_numbers.length));
+        var get_number = original_numbers[number_index];
+        numbers.push(get_number);
+        original_numbers.splice(number_index,1)
+    }
+    numbers.sort(function(a, b) {return a-b});
+
+    var row = '<tr><th scope="row">'+(j+1)+'</th><td>'+numbers[0]+'</td><td>'+numbers[1]+'</td><td>'+numbers[2]+'</td><td>'+numbers[3]+
+                '</td><td>'+numbers[4]+'</td><td>'+numbers[5]+'</td>'
+    $('table').append(row);
+
+
+    }
+    var p = '<p>'+(d)+'원'+'</p>'
+    $('#how_much').append(p);
+}
+       
+</script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
