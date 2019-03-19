@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang=“en”>
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+</head>
+<style>
+    #join_form {
+        max-width: 500px;
+        padding:20px 12px 10px 20px;
+        font: 13px Arial, Helvetica, sans-serif;
+    }
+    .form_heading {
+        font-weight:bold;
+        font-style:italic;
+        border-bottom:2px solid #ddd;
+        margin-bottom:20px;
+        font-size:15px;
+        padding-bottom:3px;
+    }
+    #join_form label {
+        display:block;
+        margin:0px 0px 15px 0px;
+    }
+    #join_form label > span {
+        width:100px;
+        font-weight:bold;
+        float:left;
+        padding-top:8px;
+        padding-right:5px;
+    }
+    #join_form span.required {
+        color:red;
+    }
+
+</style>
+<body>
+    <!--
+
+        회원가입창 만들기
+        1. 아이디
+        2. 비밀번호
+        3. 이름
+        4. 주소 - 우편번호, 주소, 주소 디테일, 우편번호 찾기
+
+        5. 회원가입 확인버튼 - submit
+
+        * 회원 가입 확인 버튼을 눌렀을 때 모든 결과를 하나로 하벼서 alert창을 띄워주세요.
+    -->
+    
+    <!--
+        form tag
+            input, select, textarea
+            input - type => text, email. phone, date, password, hidden
+    -->
+
+    <div class="form_heading">회원가입</div>
+    <form action="#" method="post" id="join_form">
+        <label for="field1"><span>이메일<span class="required">*</span></span><input type="text" name="identification" placeholder="이메일을 입력하세요" id="identification"></label><br>
+        <label for="field2"><span>비밀번호<span class="required">*</span></span><input type="password" name="password" placeholder="6~12자리의 비밀번호를 입력하세요" id="password"><label></label><br>
+        <label for="field3"><span>비밀번호 힌트</span><select name="field3" class="select_password_q">
+            <option value="classmate">초등학교 짝궁 이름은?</option>
+            <option value="where_you_born">태어난 곳은?</option>
+            <option value="where_your_parents_met">부모님이 만난 곳은?</option>
+        </select></label><br>
+        <label for="field4"><span>힌트 정답 :</span><input type="text" name="answer" placeholder="힌트 정답" id="answer"></label><br>
+        <label for="field5"><span>이름<span class="required">*</span></span><input type="text" name="name" placeholder="이름을 입력하세요" id="name"></label><br>
+        <label for="field6"><span>주소<span class="required">*</span></span><input type="text" name="address" placeholder="도로명 주소 입력" id="address"></label>
+        <button id="zipcode_search">우편번호 찾기</button><br>
+        <label><span></span><button id="complete">완료</button></label>
+        <label><span></span><button id="load">불러오기</button></label>
+    </form>
+
+
+
+
+        <script>
+            $(function() {
+                $("#zipcode_search").click(function() {
+                    new daum.Postcode({
+                    oncomplete: function(data) {
+                        console.log(data);
+                        console.log(data.address);
+                        $('#address').val(data.address);
+                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+                    // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+                }
+            }).open();
+
+                });
+            });
+
+
+            $("#join_form").submit(function(e) {
+                var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+                var passRule = /^[A-Za-z0-9]{6,12}$/;
+
+                if($("#identification").val()=='') {
+                    alert("이메일을 입력해주세요");
+                    return false;
+                }
+                if(!emailRule.test($("#identification").val())) {
+                    alert("이메일 형식이 틀렸습니다");
+                    return false;
+                }
+                if($("#password").val=='') {
+                    alert("패스워드를 입력해주세요");
+                    return false;
+                }
+                if(!passRule.test($("#password").val())) {
+                    alert("패스워드 형식이 틀렸습니다")
+                    return false;
+                }
+                if($('#name').val()=='') {
+                    alert('이름을 입력하세요');
+                    return false;
+                }
+                if($('#address').val()=='') {
+                    alert('주소를 입력하세요');
+                    return false;
+                }
+                
+                e.preventDefault();
+                alert("회원가입완료");
+
+            });
+
+            /*
+            var storage_key = "content";
+
+            $(function() {
+                $('#complete').click(function() {
+                    var form_content = $('#join_form').serialize();
+                    localStorage.setItem(storage_key, form_content);
+                    return false;
+                });
+                $('#load').click(function() {
+                    var form_content = localStorage.getItem(storage_key);
+                    form_content = decodeURIComponent(form_content);
+                    var split_data = form_content.split("&");
+                    for ( var i in split_data) {
+                        var content_data = split_data[i].split("=");
+                        var key = content_data[0];
+                        var data = content_data[1];
+                        $('#'+key).val(data);
+                    }
+                    return false;
+                })
+                
+            })
+            */
+            
+            
+
+            $('#complete').click(function() {
+            var whole_form = {};
+            var id = $('#identification').val();
+            var pw = $('#password').val();
+            var an = $('#answer').val();
+            var nm = $('#name').val();
+            var ad = $('#address').val();
+
+            whole_form['identification'] = id;
+            whole_form['password'] = pw;
+            whole_form['answer'] = an;
+            whole_form['name'] = nm;
+            whole_form['address'] = ad;
+
+                var form_content = JSON.stringify(whole_form);
+                localStorage.setItem("join_form", form_content);
+                return false;
+            });
+
+            $('#load').click(function() {
+                var whole_form_dict = localStorage.getItem("join_form");
+                content_dict = JSON.parse(whole_form_dict)
+                for(var key in content_dict) {
+                $('#'+key).val(content_dict[key]);
+                };
+            });
+                
+
+
+            // 정규표현식, 이메일주소 정규표현식
+            // 최종 안내 문구 출력
+
+        </script>
+
+        <!--
+
+            과제 1 : 입력값이 있는지 없는지 테스트 벨리데이션
+            과제 2 : 정규표현식을 이용한 벨리데이션
+        -->
+</body>
+</html>

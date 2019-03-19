@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang=“en”>
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <select name="fruit">
+        <option value="사과">1</option>
+        <option value="바나나">2</option>
+
+    </select>
+    <script type="text/javascript">
+        var content = {} // dictionary (사전형)
+        content['content1'] = '1111';
+        content['content2'] = '2222';
+        content['content3'] = '3333';
+        console.log(content);
+        
+        // 사전형 변수를 문자열로 형변환하기
+        var content_string = JSON.stringify(content);
+        
+        // 문자열이었던 데이터를 다시 사전형으로 형변환하기
+        var content_dict = JSON.parse(content_string);
+        for(var key in content_dict) {
+            // 해당 사전형 변수에서 하나의 값을 선택하여 꺼내기
+            $('#'+key).val(content_dict[key]);
+        }
+    </script>
+</body>
+</html>
