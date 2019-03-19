@@ -70,6 +70,7 @@
         <label for="field6"><span>주소<span class="required">*</span></span><input type="text" name="address" placeholder="도로명 주소 입력" id="address"></label>
         <button id="zipcode_search">우편번호 찾기</button><br>
         <label><span></span><button id="complete">완료</button></label>
+        <label><span></span><button id="load">불러오기</button></label>
     </form>
 
 
@@ -123,8 +124,39 @@
                 
                 e.preventDefault();
                 alert("회원가입완료");
-            })
 
+            });
+
+
+            var storage_key = "content";
+
+            $(function() {
+                $('#complete').click(function() {
+                    var form_content = $('#join_form').serialize();
+                    localStorage.setItem(storage_key, form_content);
+                    return false;
+                });
+                $('#load').click(function() {
+                    var form_content = localStorage.getItem(storage_key);
+                    form_content = decodeURIComponent(form_content);
+                    var split_data = form_content.split("&");
+                    for ( var i in split_data) {
+                        var content_data = split_data[i].split("=");
+                        var key = content_data[0];
+                        var data = content_data[1];
+                        $('#'+key).val(data);
+                    }
+                    return false;
+                })
+                var content_string = JSON.stringify('content');
+                var content_dict = JSON.parse(content_string);
+                
+                for(var key in content_dict) {
+                    $('#'+key).val(content_dict[key]);
+
+                }
+
+            })
 
             // 정규표현식, 이메일주소 정규표현식
             // 최종 안내 문구 출력
