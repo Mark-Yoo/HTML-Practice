@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Steam</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+    .container {
+        align-content: center;
+    }
+
+    #top_banner {
+        background-color: black;
+    }
+    #second_banner {
+        background-color: gray;
+    }
+    #btn_search:hover {
+        color: yellow;
+    }
+    #hidden_search {
+        display:none;
+        border-top:2px solid beige;
+        background-color:gray;
+    } 
+    #main_page {
+        background-color:rgb(201, 196, 196);
+    }
+    #history {
+        background-color:white;
+    }
+    #watch1 {
+        width: 350px;
+        height: 450px;
+    }
+    .product_image {
+        position:relative;
+    }
+    .img-magnifier-glass {
+        position:absolute;
+        border:3px solid #000;
+        border-radius: 50%;
+        cursor: none;
+
+        width: 100px;
+        height: 100px;
+    }
+    * {
+        box-sizing: border-box;
+    }
+</style>
+<body>
+    <div id="main_header">
+                <div class="container-fluid" id=top_banner>
+                    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:black">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:black">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                            <a class="nav-link" href="#">TechmoMarine</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="#">S.Coifman</a>
+                            <li class="nav-item">
+                            <a class="nav-link" hefr="#">Glycine</a>
+                            </li>
+                            </li>
+
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <button class="btn btn-sm btn-outline-secondary" id="btn_search" type="submit">Search</button>
+                        </form>
+                        </div>
+                    </nav>
+                </div>
+                <div class="container-fluid" id=second_banner>
+                        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:gray">
+                                <a class="navbar-brand" href="#" style="color:yellow">Invicta</a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                                </button>
+                            
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:yellow">
+                                        Watches
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Akula</a>
+                                        <a class="dropdown-item" href="#">Angel</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Aviator</a>
+                                    </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">New Arrivals</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Swiss Made</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">JustForHer</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Bands</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Stores</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Discover</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">About</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Service</a>
+                                    </li>
+                                </ul>
+                                </div>
+                            </nav>
+                </div>
+                <div class="container-fluid" id="hidden_search">
+                        <nav class="navbar navbar-dark" style="background-color:gray">
+                                <form class="form-inline">
+                                <input class="form-control mr-sm-2" id="hidden_searchbar" type="search" placeholder="Search model name or number" aria-label="Search" style="width:40em">
+                                <button class="btn btn-warning" type="submit" style="margin-right:10px; width:180px;">Search</button>
+                                <button class="btn btn-outline-dark" type="submit">Advanced Search</button>
+                                </form>
+                        </nav>
+                </div>
+    </div>
+    <div class="container" id="main_page">
+                <div class="container" id="history">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" style="color:gray">Home ></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" style="color:gray">Collections ></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" style="color:gray">Anatomic ></a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#" style="color:gray">29725</a>
+                            </li>
+                        </ul>
+                </div>
+
+                <div class="container" style="margin-top:2%; background-color:whitesmoke">
+                    <ul class="nav justify-content-end">
+                        <button style="background-color:whitesmoke; border-color:whitesmoke; border-left-color:white; margin-right:-17px; padding:20px;">Search the Collection ></button>
+                    </ul>
+                </div>
+            <div class="main_page_row" style="margin-top:10px; padding-left:10px; padding-top:10px; background-color:white">
+                <div class="row">    
+                    <div class="col-4">
+                        <div class="product_image">
+                            <img src="image/watch1.jpg" id="watch1" alt="watch">
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <h1 style="align-content: left">Invicta Anatomic<br>model 29725<br><sup>Men's Watch</sup></h1>
+                        <div class="row">
+                            <div class="col">
+                                <div class="col">
+                                    <p>Movement</p>
+                                    <hr>
+                                    <div> * Components: China <br> * Caliber:TY2809 </div>
+                                    <br>
+                                    <p>Band</p>
+                                    <hr>
+                                    <div> * Material: Silicone <br> * Tone: Black <br> * Length: 210mm </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="col">
+                                    <p>Case and Dial</p>
+                                    <hr>
+                                    <div> * Case Size: 48mm <br> * Case Material: Stainless Steel <br> * Bezel Material: Stainless Steel <br> * Bezel Color: Gold <br> * Crown Type: Push <br> * Crystal Type: Flame Fusion <br> * Dial Material: Metal</div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+
+
+<script type="text/javascript">
+
+    //메뉴바에 기능추가
+    $(document).ready(function() {
+        $("#btn_search").click(function(e) {
+            e.preventDefault();
+            $("#hidden_search").toggle();
+        });
+    
+
+
+        $("#navbarDropdown").mouseenter(function() {
+            $(".dropdown-menu").show();
+        $("#navbarDropdown").mouseleave(function() {
+            $(".dropdown-menu").hide();
+        });
+        });
+    });
+
+    //maginifier function
+    function magnify(imgID, zoom) {
+        var img, glass, w, h, bw;
+        img = document.getElementById(imgID);
+
+        glass = document.createElement("DIV");
+        glass.setAttribute("class", "img-magnifier-glass");
+
+        img.parentElement.insertBefore(glass, img);
+
+        glass.style.backgroundImage="url('" + img.src + "')";
+        glass.style.backgroundRepeat="no-repeat";
+        glass.style.backgroundSize=(img.width*zoom)+"px"+(img.height*zoom)+"px";
+        bw = 3;
+        w = glass.offsetWidth / 2;
+        h = glass.offsetHeight / 2;
+
+        glass.addEventListener("mousemove", moveMagnifier);
+        img.addEventListener("mousemove", moveMagnifier);
+
+        glass.addEventListener("touchmove", moveMagnifier);
+        img.addEventListener("touchmove", moveMagnifier);
+        function moveMagnifier(e) {
+            var pos, x, y;
+            e.preventDefault();
+            pos = getCursorPos(e);
+            x = pos.x;
+            y = pos.y;
+
+            if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+            if (x < w / zoom) {x = w / zoom;}
+            if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+            if (y < h / zoom) {y = h / zoom;}
+
+            glass.style.left = (x - w) + "px";
+            glass.style.top = (y - h) + "px";
+
+            glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+            }
+
+            function getCursorPos(e) {
+                var a, x = 0, y = 0;
+                e = e || window.event;
+                a = img.getBoundingClientRect();
+                x = e.pageX - a.left;
+                y = e.pageY - a.top;
+                x = x - window.pageXOffset;
+                y = y - window.pageYOffset;
+                return {x : x, y : y};
+        }
+    }
+    magnify("watch1", 3);
+
+</script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
